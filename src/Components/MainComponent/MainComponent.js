@@ -1,56 +1,28 @@
 import React, { Component } from 'react'
 import FirstComponent from '../FirstComponent/FirstComponent'
 import SecondComponent from '../SecondComponent/SecondComponent'
-import axios from 'axios'
+import './MainComponent.css'
+
 
 class MainComponent extends Component {
-    constructor(props) {
-        super(props)
     
-        this.state = {
-             items: []
-        }
-    }
 
-    componentDidMount (){
-        axios.get('https://ministries.herokuapp.com/ministries/?format=json')
-        .then(res=> {
-            const items = res.data
-            console.log(items)
-             this.setState({
-                items: items
-              })
-     
-        })
-        .catch(error => {
-            console.log(error)
-        })
-          
-        }
-    
     render() {
-        const {items} = this.state
+        
         return (
-            <div>
+            
                 <div>
-                {
-                        items.map(item => (
-                            <FirstComponent item={item}  />
-                        ))
-                    } 
+               <FirstComponent
+               name={this.props.item.name}
+                minister={this.props.item.minister}
+               minister_state={this.props.item.minister_state}
+               />
+               <SecondComponent
+               address={this.props.item.address}
+               web={this.props.item.website}
+               />
+               <hr/>
                 </div>
-                
-                <div>
-                {
-                        items.map(item => (
-                            <SecondComponent item={item}  />
-                        ))
-                    } 
-                </div>
-                
-
-                    
-            </div>
         )
     }
 }
