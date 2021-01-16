@@ -9,7 +9,7 @@ class FirstComponent extends Component {
                  <div className="first-info ml-5">
         <div className='title row pt-5'>
             <div className="img-title img">
-            <img src={logo} className="text-left"></img>
+            <img src={logo} className="text-left" alt="nigerian-logo"></img>
             </div>
            <div className="text-left ml-3"><p className="ministry-name">{this.props.name}</p></div>
         </div>
